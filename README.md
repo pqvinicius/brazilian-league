@@ -1,57 +1,53 @@
-# Análise de Dados do Campeonato Brasileiro (2009-2018)
+# Análise de Performance do Campeonato Brasileiro (2009-2018)
 
-Este projeto consiste em uma análise exploratória dos dados do Campeonato Brasileiro de Futebol da Série A, abrangendo o período de 10 anos, de 2009 a 2018. O objetivo é extrair insights e visualizar informações sobre o desempenho das equipes ao longo dessa década.
+## 1. Descrição & Objetivo
 
-## 📊 Fonte dos Dados
+Este projeto realiza uma análise exploratória de dados (EDA) sobre 10 anos de história do Campeonato Brasileiro de futebol (de 2009 a 2018). O objetivo principal é identificar padrões de desempenho, destacar as equipes mais consistentes e vitoriosas do período, e entender os fatores que mais se correlacionam com o sucesso na competição.
 
-Os dados utilizados nesta análise foram obtidos a partir do arquivo `Data-Camp-Brasileiro_1.csv`, que contém a classificação e as estatísticas dos times em cada temporada.
+* **Termo Técnico:** **Análise Exploratória de Dados (EDA - Exploratory Data Analysis)**: Pense na EDA como o trabalho de um detetive de dados. Antes de tirar conclusões finais, nós mergulhamos nos dados para "interrogá-los". Usamos estatísticas e gráficos para resumir suas principais características, encontrar padrões, identificar anomalias (como dados faltantes ou estranhos) e testar hipóteses iniciais. É a primeira etapa para entender a história que os dados têm para contar.
 
-### Estrutura dos Dados
+## 2. Contexto de Negócio
 
-As colunas presentes no conjunto de dados são:
+Embora o tema seja esportivo, a análise demonstra habilidades transferíveis para qualquer contexto de negócio. A lógica aplicada aqui pode ser usada para:
+* Analisar o desempenho de produtos ou concorrentes ao longo do tempo.
+* Identificar KPIs (Key Performance Indicators) que levam ao sucesso.
+* Criar rankings de eficiência (ofensiva vs. defensiva) para otimizar recursos.
+* Entender tendências de mercado (como a média de gols por ano, que pode indicar mudanças táticas).
 
-- `ANO`: Ano da temporada
-- `Posicao`: Posição final da equipe
-- `Time`: Nome da equipe
-- `Pontos`: Total de pontos
-- `Vitoria`: Número de vitórias
-- `Empates`: Número de empates
-- `Derrotas`: Número de derrotas
-- `Gols pro`: Gols marcados
-- `Gols Contra`: Gols sofridos
-- `Saldo Gols`: Saldo de gols
-- `Aproveitamento`: Percentual de aproveitamento
-- `Estados`: Sigla do estado da equipe
+## 3. Fonte dos Dados
 
-## 🚀 Análises Realizadas
+Os dados foram obtidos a partir de um dataset público disponível no Kaggle, contendo as classificações finais do campeonato, pontos, vitórias, gols e outras estatísticas de cada time participante entre 2009 e 2018.
 
-O notebook de análise (`brazilian-league.ipynb`) aborda as seguintes questões:
+## 4. Ferramentas e Bibliotecas Utilizadas
 
-### 1. Campeões por Ano
-Identificação da equipe campeã em cada uma das temporadas analisadas.
+* **Linguagem:** Python
+* **Bibliotecas:** Pandas (para manipulação de dados), Matplotlib e Seaborn (para visualização de dados).
+* **Ambiente:** Jupyter Notebook.
 
-### 2. Maiores Campeões
-Visualização dos times com mais títulos no período de 2009 a 2018.
+## 5. Metodologia Aplicada
 
-### 3. Análise Descritiva e de Ranking
-- Ranking dos times por total de pontos acumulados
-- Ranking de média de gols marcados e sofridos para as equipes que participaram da Série A com maior frequência
-- Ranking de média de aproveitamento para essas mesmas equipes
+A análise foi estruturada em várias etapas para extrair o máximo de valor dos dados:
 
-### 4. Análise Temporal
-- Evolução da média de gols marcados por ano no campeonato
-- Estudo de caso do desempenho do Corinthians, analisando a evolução de gols marcados, gols sofridos e posição final ao longo dos anos
+1.  **Análise Descritiva e de Ranking:**
+    * Identificação dos campeões de cada ano e o ranking dos maiores vencedores no período.
+    * Criação de um **filtro de relevância**, analisando apenas os times que participaram de um número de temporadas acima da média. Isso garante que as comparações de desempenho (gols, aproveitamento) sejam feitas entre equipes com um histórico mais consolidado na Série A.
+    * Criação de rankings de desempenho médio (ataque, defesa e aproveitamento) para esses times filtrados.
 
+2.  **Análise Temporal:**
+    * Investigação da evolução da média de gols marcados por ano no campeonato, identificando tendências ofensivas ao longo da década.
+    * **Estudo de Caso (Corinthians):** Análise aprofundada do desempenho do Corinthians ano a ano, cruzando sua performance de gols (pró e contra) com a sua classificação final.
 
+3.  **Análise de Consistência e Eficiência:**
+    * Análise dos times que mais frequentaram o G4 (zona de classificação para a Libertadores).
+    * Comparação entre a **consistência** (vezes no G4) e a **eficiência** (títulos conquistados), revelando equipes que se mantiveram no topo, mas sem o mesmo sucesso em títulos.
 
-## 📈 Principais Insights
+4.  **Análise Geográfica e de Correlação:**
+    * Agrupamento por estados para avaliar o desempenho médio regional.
+    * Criação de uma matriz de correlação para entender numericamente quais variáveis (pontos, vitórias, saldo de gols) têm maior impacto na posição final.
 
-Os resultados desta análise fornecem uma visão abrangente sobre:
-- Performance histórica dos times brasileiros
-- Tendências temporais no futebol brasileiro
-- Comparações estatísticas entre equipes
-- Evolução do desempenho de times específicos
+## 6. Principais Insights e Resultados
 
----
-
-*Análise realizada com dados do Campeonato Brasileiro de Futebol - Série A (2009-2018)*
+* **Eficiência vs. Consistência:** O Grêmio foi o time mais consistente no G4 (6 vezes), mas não conquistou títulos no período. Em contrapartida, o Corinthians, com 5 presenças no G4, foi o maior campeão (3 títulos), demonstrando maior eficiência.
+* **Correlação com Sucesso:** A análise de correlação confirmou que **Pontos** (`0.99` de aproveitamento) e **Vitórias** (`0.98`) são os fatores mais fortes para uma boa classificação, com uma correlação quase perfeita. O número de derrotas (`-0.91`) é o indicador mais forte de uma campanha ruim.
+* **Desempenho Regional:** O estado do Rio Grande do Sul (RS) apresentou a melhor média de pontos e a melhor classificação média, superando eixos tradicionalmente dominantes como SP e RJ na década analisada.
+* **Tendência Ofensiva:** A média de gols por equipe no campeonato atingiu seu pico em 2009 e, após uma queda, mostrou uma tendência de recuperação a partir de 2013.
